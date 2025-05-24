@@ -1,4 +1,3 @@
-/******* Change Box Model ***************/
 :root {
   --primary-color: rgb(25, 24, 49);
   --xxs: 0.236em;
@@ -10,9 +9,7 @@
   --xxl: 4.236em;
 }
 
-*,
-*:before,
-*:after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -30,31 +27,31 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6, nav, header {
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
 
 h1 {
   font-size: var(--xl);
 }
+
 h2, h3, h4, h5, h6 {
-  font-size: var(--xl);
+  font-size: var(--l);
 }
+
 p {
   font-size: var(--m);
 }
 
-
-
 .button-styles {
   display: inline-block;
   background-color: #60b1c5;
-  color: #000000;
+  color: #000;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(var(--m), var(--l), 2vw); 
+  font-size: clamp(var(--m), var(--l), 2vw);
   font-weight: 600;
-  padding: 0.4em 1em; 
+  padding: 0.4em 1em;
   border: none;
-  border-radius: 5px; 
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -62,16 +59,15 @@ p {
 .button-styles:hover {
   background-color: rgb(83.4891304348, 154.3065217391, 172.0108695652);
 }
+
 .button-styles:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(75, 139, 155, 0.3);
 }
 
-
-
-
 #top-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-decoration: none;
   width: 100%;
@@ -84,14 +80,14 @@ p {
 
 .siteName {
   font-size: var(--xl);
-  text-wrap: nowrap;
+  white-space: nowrap;
   font-weight: 600;
 }
 
 #tools {
   font-size: clamp(1vw, var(--l), 5vw);
   margin: 0 25px 0 auto;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 nav {
@@ -99,16 +95,15 @@ nav {
 }
 
 nav ul {
- display: flex;
- justify-content: space-evenly;
- background-color: var(--primary-color);
- color: white;
- font-size: var(--xl);
- font-family: Poppins;
- list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--m);
+  font-family: Poppins, sans-serif;
+  list-style: none;
 }
 
-/* --- Base Styles --- */
 .hero {
   display: flex;
   background: url("../images/vehicles/delorean.jpg") no-repeat center center;
@@ -118,6 +113,7 @@ nav ul {
   position: relative;
   min-height: 250px;
 }
+
 .call-to-action-container {
   background-color: rgba(255,255,255,0.8);
   width: clamp(200px, 20%, 500px);
@@ -128,17 +124,16 @@ nav ul {
   font-weight: 700;
 }
 
-.reviews h3,
-.upgrades h3 {
-  margin-bottom: 1rem;
-  font-size: clamp(2vw, 2.25em, 4vw);
-  text-wrap: nowrap;
-}
-.reviews,
-.upgrades {
+.reviews, .upgrades {
   flex: 1;
   text-align: center;
+}
 
+.reviews {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-top: var(--xxl);
 }
 
 .upgrade-grid {
@@ -157,7 +152,7 @@ nav ul {
 }
 
 .upgrade-item a {
-  color:black;
+  color: black;
   font-weight: 700;
   text-decoration: underline;
 }
@@ -168,18 +163,11 @@ nav ul {
   margin-bottom: 0.5rem;
 }
 
-
 .reviews-upgrades {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: var(--xl);
-}
-
-.reviews {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
 }
 
 .review-wrapper {
@@ -192,24 +180,23 @@ nav ul {
   text-align: left;
 }
 
-
-@media screen and (max-width: 672px) {
-  .reviews {
-    margin-top: var(--xxl);
+@media screen and (min-width: 401px) {
+  #top-header {
+    flex-direction: row;
   }
   nav ul {
     font-size: var(--l);
   }
-  h2, h3, h4, h5, h6 {
-  font-size: var(--l);
-  }
 }
-@media screen and (max-width: 400px) {
-  header {
-    display:flex;
-    flex-direction: column;
+
+@media screen and (min-width: 673px) {
+  h2, h3, h4, h5, h6 {
+    font-size: var(--xl);
   }
   nav ul {
-    font-size: var(--m);
+    font-size: var(--xl);
+  }
+  .reviews {
+    margin-top: 0;
   }
 }
