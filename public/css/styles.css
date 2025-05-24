@@ -202,6 +202,7 @@ nav ul {
   }
   h2, h3, h4, h5, h6 {
   font-size: var(--l);
+  }
 }
 @media screen and (max-width: 400px) {
   header {
@@ -211,5 +212,4 @@ nav ul {
   nav ul {
     font-size: var(--m);
   }
-}
 }
