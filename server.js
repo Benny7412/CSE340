@@ -41,12 +41,16 @@ app.use(async (req, res, next) => {
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status == 404){ message = err.message} else if (err.status == 500) { message ="You found our favorite error!"} else
-   {message = 'Oh no! There was a crash. Maybe try a different route?'}
-  res.render("errors/error", {
-    title: err.status || 'Server Error',
+  if 
+   (err.status == 404) {message = err.message}
+  else if 
+   (err.status == 500) { message = "You found the error!"} 
+  else
+    {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  res.status(err.status || 500).render("errors/error", {
+    title: err.status || "Server Error",
     message,
-    nav
+    nav,
   })
 })
 /* ***********************

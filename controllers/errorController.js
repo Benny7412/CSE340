@@ -2,8 +2,9 @@ const utilities = require("../utilities/")
 const errorController = {}
 
 errorController.throwError = async function(req, res, next){
-    throw new Error("Error 500")
-    
+    const err = new Error("Error 500")
+    err.status = 500
+    throw err;
 }
 
 module.exports = errorController
