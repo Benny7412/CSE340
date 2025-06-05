@@ -5,7 +5,7 @@ CREATE TYPE public.account_type AS ENUM (
   'Employee',
   'Admin');
 
-
+--CHANGE OWNER HERE
 ALTER TYPE public.account_type
     OWNER TO database414;
 
