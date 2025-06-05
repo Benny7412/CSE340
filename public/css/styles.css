@@ -270,7 +270,7 @@ nav ul {
 
 @media screen and (min-width: 673px) {
   h2, h3, h4, h5, h6 {
-    font-size: var(--xl);
+    font-size: var(--l);
   }
   nav ul {
     font-size: var(--xl);
