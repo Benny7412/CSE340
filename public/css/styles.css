@@ -22,6 +22,11 @@ body {
   background: #f9f9f9;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   text-decoration: none;
 }
@@ -32,6 +37,7 @@ h1, h2, h3, h4, h5, h6, nav, header {
 
 h1 {
   font-size: var(--xl);
+  text-align: center;
 }
 
 h2, h3, h4, h5, h6 {
@@ -179,6 +185,79 @@ nav ul {
 .reviews ul {
   text-align: left;
 }
+
+/*inventory view*/
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--xl);
+  width: 80%;
+  align-self: center;
+}
+#inv-display {
+  list-style: none;
+}
+
+#inv-display li {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+#inv-display a {
+  color: black;
+  font-size: var(--s);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#inv-display img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+#inv-title {
+  margin: var(--s);
+}
+
+/*details view*/
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--l);
+  margin: var(--l) 0;
+}
+
+.vehicle-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+.vehicle-info h2 {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 600px) {
+  #inv-display {
+    width: 60%;
+  }
+  .vehicle-detail {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .vehicle-detail img {
+    width: 50%;
+  }
+  .vehicle-info {
+    flex: 1;
+  }
+}
+
+
 
 @media screen and (min-width: 401px) {
   #top-header {
