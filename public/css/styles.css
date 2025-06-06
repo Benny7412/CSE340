@@ -1,5 +1,5 @@
 :root {
-  --primary-color: rgb(25, 24, 49);
+  --primary-color: #3285c0;
   --xxs: 0.236em;
   --xs: 0.382em;
   --s: 0.618em;
@@ -7,6 +7,18 @@
   --l: 1.618em;
   --xl: 2.618em;
   --xxl: 4.236em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+
+  }
 }
 
 *, *::before, *::after {
@@ -110,6 +122,19 @@ nav ul {
   list-style: none;
 }
 
+
+nav a {
+  display: block;
+  color: white;
+  transition: background-color 0.3s ease-out;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #2a5d84;
+}
+
 .hero {
   display: flex;
   background: url("../images/vehicles/delorean.jpg") no-repeat center center;
@@ -193,18 +218,28 @@ nav ul {
   gap: var(--xl);
   width: 80%;
   align-self: center;
+
 }
 #inv-display {
   list-style: none;
 }
+
 
 #inv-display li {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-duration: 0.75s;
+}
+
+#inv-display li:nth-child(1) {
+  animation-delay: 0.5s;
 }
 
 #inv-display a {
@@ -212,6 +247,7 @@ nav ul {
   font-size: var(--s);
   font-weight: 600;
   text-decoration: none;
+  
 }
 
 #inv-display img {
@@ -235,6 +271,7 @@ nav ul {
 .vehicle-detail img {
   max-width: 100%;
   height: auto;
+    margin: 10px;
 }
 
 .vehicle-info h2 {
@@ -251,6 +288,7 @@ nav ul {
   }
   .vehicle-detail img {
     width: 50%;
+    margin: 20px;
   }
   .vehicle-info {
     flex: 1;
@@ -274,6 +312,8 @@ nav ul {
   }
   nav ul {
     font-size: var(--xl);
+    padding: var(--xs);
+    margin-bottom: var(--s);
   }
   .reviews {
     margin-top: 0;
