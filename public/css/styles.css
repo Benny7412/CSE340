@@ -60,6 +60,10 @@ p {
   font-size: var(--m);
 }
 
+#index-main-heading {
+  text-align: left;
+}
+
 .button-styles {
   display: inline-block;
   background-color: #60b1c5;
@@ -276,6 +280,49 @@ nav a:hover {
 
 .vehicle-info h2 {
   margin-top: 0;
+}
+
+
+/* Account view*/
+
+#loginContainer, #registerContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm, #registerForm {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+#loginForm div, #registerForm div {
+  display:flex;
+  flex-direction: column;
+  margin-bottom: var(--s);
+}
+
+#loginForm input, #registerForm input {
+  padding: .5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#loginForm button, #registerForm button {
+  padding: .6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background-color 0.5s;
+}
+
+#loginForm button:hover, #registerForm button:hover {
+  background-color: rgb(222, 222, 222);
 }
 
 @media screen and (min-width: 600px) {
