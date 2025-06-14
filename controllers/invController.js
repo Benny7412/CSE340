@@ -1,6 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
-const pickInventory = require('../utils/pickInventory');
+const pickInventory = require('../utilities/pickInventory');
 
 const invCont = {}
 
