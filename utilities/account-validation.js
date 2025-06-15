@@ -15,12 +15,14 @@ minLength: 12,
 minLowercase: 1,
 minUppercase: 1,
 minNumbers: 1,
-minSymbols: 1,}).withMessage("Password does not meet requirements."),
+minSymbols: 1,
+        })
+        .withMessage("Password does not meet requirements."),
     ]
   }
 
   /* ******************************
- * Validate data
+ * Check data and return errors or continue to registration
  * ***************************** */
 validate.checkRegData = async (req, res, next) => {
   const { account_firstname, account_lastname, account_email } = req.body
@@ -37,7 +39,8 @@ validate.checkRegData = async (req, res, next) => {
       account_email,
     })
     return
-  } next()
+  }
+  next()
 }
 
 module.exports = validate

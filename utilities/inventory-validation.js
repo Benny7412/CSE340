@@ -1,8 +1,6 @@
 const utilities = require(".")
 const { body, validationResult } = require("express-validator")
 const invValidate = {}
-const inventoryFields = require('../constants/inventoryFields')
-const pickInventory = require('../utilities/pickInventory')
 
 invValidate.classificationRules = () => {
   return [
@@ -46,22 +44,42 @@ invValidate.inventoryRules = () => {
 }
 
 invValidate.checkInvData = async (req, res, next) => {
-  let errors = validationResult(req);
-  const inv = pickInventory(req.body);
+  let errors = validationResult(req)
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+  } = req.body
 
   if (!errors.isEmpty()) {
-    const nav = await utilities.getNav();
-    const classificationList = await utilities.buildClassificationList(inv.classification_id);
-
-      return res.render('inventory/add-inventory', {
-      title: 'Add Inventory',
+    let nav = await utilities.getNav()
+    const classificationList = await utilities.buildClassificationList(classification_id)
+    res.render("inventory/add-inventory", {
+      title: "Add Inventory",
       nav,
       classificationList,
       errors,
-      ...inv, //spreads inv into required fields
-    });
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+    })
+    return
   }
-  next();
+  next()
 }
 
 module.exports = invValidate
