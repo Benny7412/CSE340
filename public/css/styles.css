@@ -302,6 +302,42 @@ nav a:hover {
   margin-top: 0;
 }
 
+.add-to-cart-btn {
+  background-color: #4c96d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #3a7cb0;
+}
+
+.add-to-cart-btn.disabled {
+  background-color: #8abfe0;
+  cursor: default;
+}
+
+.cart-notification {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.cart-notification.warning {
+  background-color: #ff9800;
+}
+
 /* Account view*/
 
 #loginContainer,
@@ -689,4 +725,330 @@ nav a:hover {
   border-radius: 4px;
   margin-top: 1rem;
   list-style-position: inside;
+}
+
+/* Checkout Styles */
+#checkout-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  #checkout-container {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+#order-summary,
+#payment-section {
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.checkout-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.checkout-table th,
+.checkout-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.checkout-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#total-section {
+  text-align: right;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 2px solid #ddd;
+}
+
+.account-info {
+  margin-top: 20px;
+}
+
+.insufficient-funds {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.checkout-actions {
+  margin-top: 20px;
+}
+
+.back-to-cart {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.back-to-cart:hover {
+  text-decoration: underline;
+}
+
+/* Form Button */
+.form-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Purchase Success Styles */
+.success-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.account-balance {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.order-details {
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.order-total {
+  font-weight: bold;
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.action-link {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.action-link:hover {
+  background-color: #2a5d84;
+}
+
+/* Insufficient Funds Message */
+.insufficient-funds-message {
+  background-color: #ffebee;
+  border-left: 5px solid #f44336;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.insufficient-funds-message p {
+  margin: 5px 0;
+}
+
+.insufficient-funds-message p:first-child {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Shopping Cart Styles */
+#cart-container {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.cart-table .item-info {
+  display: flex;
+  align-items: center;
+}
+
+.cart-table .item-info img {
+  margin-right: 15px;
+  width: 80px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-table .item-info span {
+  font-weight: 600;
+}
+
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+  background-color: #d32f2f;
+}
+
+#cart-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 20px;
+  border-top: 2px solid #ddd;
+}
+
+#cart-total {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+#total-price {
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: var(--primary-color);
+}
+
+#checkout-button {
+  margin-right: 10px;
+}
+
+.secondary-button {
+  background-color: #757575;
+}
+
+.secondary-button:hover {
+  background-color: #616161;
+}
+
+#empty-cart-message {
+  text-align: center;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+#empty-cart-message h2 {
+  margin-bottom: 15px;
+  color: #616161;
+}
+
+#empty-cart-message a {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+#empty-cart-message a:hover {
+  background-color: #2a5d84;
+}
+
+/* Admin-specific styles */
+.admin-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* Balance form styles */
+#balanceForm {
+  width: 100%;
+}
+
+#balanceForm .form-group {
+  margin-bottom: 15px;
+}
+
+#account_balance {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-button {
+  background-color: #4c96d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.form-button:hover {
+  background-color: #3a7cb0;
 }

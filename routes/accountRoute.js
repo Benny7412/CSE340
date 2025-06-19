@@ -52,4 +52,21 @@ router.post(
   utilities.handleErrors(accountController.updatePassword)
 );
 
+// Check account balance for checkout
+router.post(
+  "/check-account-balance",
+  utilities.handleErrors(accountController.checkAccountBalance)
+);
+
+// Protected route
+// Update account balance
+router.post(
+  "/update-balance",
+  utilities.checkJWTToken,
+  utilities.checkAuthorization,
+  regValidate.balanceRules(),
+  regValidate.checkBalanceData,
+  utilities.handleErrors(accountController.updateAccountBalance)
+);
+
 module.exports = router;

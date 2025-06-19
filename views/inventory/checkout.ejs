@@ -1,0 +1,43 @@
+<h1>Checkout</h1>
+
+<%- messages() %>
+
+    <div id="checkout-container">
+        <div id="order-summary">
+            <h2>Order Summary</h2>
+            <div id="checkout-items">
+                <!-- Items will be loaded here via JavaScript -->
+            </div>
+            <div id="total-section">
+                <h3>Total: <span id="checkout-total">$0.00</span></h3>
+            </div>
+        </div>
+
+        <div id="payment-section">
+            <h2>Payment</h2>
+            <div class="account-info">
+                <% if (locals.accountData) { %>
+                    <p>Current Balance: <span id="account-balance">
+                            <%= accountBalance %>
+                        </span></p>
+                    <% if (sufficientFunds) { %>
+                        <form id="payment-form" action="/inv/process-payment" method="POST">
+                            <input type="hidden" name="order_total" id="order-total-input" value="">
+                            <button type="submit" class="form-button">Complete Purchase</button>
+                        </form>
+                        <% } else { %>
+                            <p class="insufficient-funds">Insufficient funds in your account.</p>
+                            <p>Please add funds to your account.</p>
+                            <% } %>
+                                <% } else { %>
+                                    <p>Please <a href="/account/login">log in</a> to complete your purchase.</p>
+                                    <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-actions">
+        <a href="/inv/cart" class="back-to-cart">Back to Cart</a>
+    </div>
+
+    <script src="/js/checkout.js"></script>

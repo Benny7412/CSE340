@@ -161,8 +161,6 @@ async function buildAccountUpdate(req, res, next) {
   const account_id = parseInt(req.params.accountId);
   let nav = await utilities.getNav();
 
-
-
   const accountData = await accountModel.getAccountById(account_id);
 
   res.render("account/update", {
@@ -173,6 +171,7 @@ async function buildAccountUpdate(req, res, next) {
     account_firstname: accountData.account_firstname,
     account_lastname: accountData.account_lastname,
     account_email: accountData.account_email,
+    accountData,
   });
 }
 
@@ -219,10 +218,7 @@ async function updatePassword(req, res, next) {
   try {
     hashedPassword = await bcrypt.hashSync(account_password, 10);
   } catch (error) {
-    req.flash(
-      "notice",
-      "there was an error processing the password update."
-    );
+    req.flash("notice", "there was an error processing the password update.");
     res.status(500).redirect("/account/");
     return;
   }
@@ -250,6 +246,82 @@ async function updatePassword(req, res, next) {
   }
 }
 
+/* ****************************************
+ *  Check Account Balance
+ * *************************************** */
+async function checkAccountBalance(req, res) {
+  // Check if user is logged in
+  if (!res.locals.loggedin) {
+    return res.json({ loggedIn: false });
+  }
+
+  const { total } = req.body;
+  const account_id = res.locals.accountData.account_id;
+
+  try {
+    const accountBalance = await accountModel.getAccountBalance(account_id);
+    const sufficientFunds = parseFloat(accountBalance) >= parseFloat(total);
+
+    // Return result
+    return res.json({
+      loggedIn: true,
+      sufficientFunds,
+      accountBalance,
+    });
+  } catch (error) {
+    console.error("Error checking account balance:", error);
+    return res.status(500).json({
+      error: "Error checking account balance",
+      loggedIn: true,
+      sufficientFunds: false,
+    });
+  }
+}
+
+/* ****************************************
+ *  Update Account Balance (Admin only)
+ * *************************************** */
+async function updateAccountBalance(req, res, next) {
+  let nav = await utilities.getNav();
+  const { account_id, account_balance } = req.body;
+
+  // Check if user is an admin
+  if (!res.locals.loggedin || res.locals.accountData.account_type !== "Admin") {
+    req.flash("notice", "You don't have permission to perform this action.");
+    return res.redirect("/account/");
+  }
+
+  try {
+    // Convert to number and validate
+    const balance = parseFloat(account_balance);
+    if (isNaN(balance) || balance < 0) {
+      req.flash(
+        "notice",
+        "Please enter a valid positive number for the balance."
+      );
+      return res.redirect(`/account/update/${account_id}`);
+    }
+
+    // Update account balance
+    const newBalance = await accountModel.setAccountBalance(
+      account_id,
+      balance
+    );
+
+    if (newBalance) {
+      req.flash("notice", "Account balance updated successfully.");
+      return res.redirect("/account/");
+    } else {
+      req.flash("notice", "Balance update failed. Please try again.");
+      return res.redirect(`/account/update/${account_id}`);
+    }
+  } catch (error) {
+    console.error("Error updating account balance:", error);
+    req.flash("notice", "An error occurred while updating the balance.");
+    return res.redirect(`/account/update/${account_id}`);
+  }
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
@@ -260,4 +332,6 @@ module.exports = {
   buildAccountUpdate,
   updateAccount,
   updatePassword,
+  checkAccountBalance,
+  updateAccountBalance,
 };

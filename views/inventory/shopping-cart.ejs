@@ -1,0 +1,24 @@
+<h1 id="inv-title">Shopping Cart</h1>
+
+<%- messages() %>
+
+    <div id="cart-container">
+        <div id="cart-items">
+            <!-- Cart items will be loaded here via JavaScript -->
+        </div>
+
+        <div id="cart-summary">
+            <div id="cart-total">
+                <h3>Total: <span id="total-price">$0.00</span></h3>
+            </div>
+            <button id="checkout-button" class="form-button">Checkout</button>
+            <button id="clear-cart" class="form-button secondary-button">Clear Cart</button>
+        </div>
+    </div>
+
+    <div id="empty-cart-message" style="display: none;">
+        <h2>Your cart is empty</h2>
+        <p><a href="/inv/">Continue Shopping</a></p>
+    </div>
+
+    <script src="/js/shoppingCart.js"></script>

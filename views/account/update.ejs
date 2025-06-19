@@ -59,7 +59,22 @@
             </form>
         </div>
 
-        <div class="back-link">
-            <a href="/account/">Return to Account</a>
-        </div>
+        <% if (locals.accountData && locals.accountData.account_type==="Admin" ) { %>
+            <div class="form-container">
+                <h2>Update Account Balance</h2>
+                <form action="/account/update-balance" method="post" id="balanceForm">
+                    <div class="form-group">
+                        <label for="account_balance">Account Balance ($)</label>
+                        <input type="number" id="account_balance" name="account_balance" step="0.01" min="0"
+                               value="<%= locals.accountData.account_balance %>" required>
+                    </div>
+                    <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+                    <button type="submit" class="form-button">Update Balance</button>
+                </form>
+            </div>
+            <% } %>
+
+                <div class="back-link">
+                    <a href="/account/">Return to Account</a>
+                </div>
     </div>

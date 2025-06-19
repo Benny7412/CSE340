@@ -1,4 +1,3 @@
-
 DROP TYPE IF EXISTS public.account_type;
 CREATE TYPE public.account_type AS ENUM (
   'Client',
@@ -49,6 +48,7 @@ CREATE TABLE IF NOT EXISTS public.account
     account_email character varying NOT NULL,
     account_password character varying NOT NULL,
     account_type account_type NOT NULL DEFAULT 'Client'::account_type,
+    account_balance NUMERIC(10,2) NOT NULL DEFAULT 0.00,
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 
@@ -257,3 +257,6 @@ WHERE inv_id = '10';
 UPDATE public.inventory
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/')
+
+-- Add a comment to the column
+COMMENT ON COLUMN public.account.account_balance IS 'Stores the account balance with up to 2 decimal places';

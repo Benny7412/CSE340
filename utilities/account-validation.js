@@ -207,4 +207,47 @@ validate.checkPasswordData = async (req, res, next) => {
   next();
 };
 
+/*  **********************************
+ *  Balance Update Validation Rules
+ * ********************************* */
+validate.balanceRules = () => {
+  return [
+    body("account_balance")
+      .isFloat({ min: 0 })
+      .withMessage("Please provide a valid number for the balance.")
+      .custom((value) => {
+        const decimalPlaces = (value.toString().split(".")[1] || "").length;
+        if (decimalPlaces > 2) {
+          throw new Error("Balance can only have 2 decimal places.");
+        }
+        return true;
+      })
+      .withMessage("Balance can only have 2 decimal places."),
+  ];
+};
+
+/* ******************************
+ * Check balance data
+ * ***************************** */
+validate.checkBalanceData = async (req, res, next) => {
+  const { account_balance } = req.body;
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const accountId = req.body.account_id;
+    const accountData = await accountModel.getAccountById(accountId);
+    return res.render("account/update", {
+      errors,
+      title: "Update Account",
+      nav,
+      account_id: accountData.account_id,
+      account_firstname: accountData.account_firstname,
+      account_lastname: accountData.account_lastname,
+      account_email: accountData.account_email,
+      accountData,
+    });
+  }
+  next();
+};
+
 module.exports = validate;

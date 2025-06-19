@@ -132,6 +132,20 @@ async function deleteInventoryItem(inv_id) {
   }
 }
 
+/* ***************************
+ *  Delete Multiple Inventory Items
+ * ************************** */
+async function deleteMultipleInventoryItems(invIds) {
+  try {
+    const sql = "DELETE FROM inventory WHERE inv_id = ANY($1)";
+    const data = await pool.query(sql, [invIds]);
+    return data;
+  } catch (error) {
+    console.error("Error deleting multiple inventory items: " + error);
+    return null;
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
@@ -140,4 +154,5 @@ module.exports = {
   addInventory,
   updateInventory,
   deleteInventoryItem,
+  deleteMultipleInventoryItems,
 };

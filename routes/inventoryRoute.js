@@ -86,13 +86,30 @@ router.get(
   utilities.handleErrors(invController.buildByClassificationId)
 );
 
-// Route to build inventory item detail view - Public route
+// Route to build inventory item detail view
 router.get("/detail/:invId", utilities.handleErrors(invController.buildDetail));
+
+// Route to add to cart
+router.post(
+  "/detail/:invId/add-to-cart",
+  utilities.handleErrors(invController.updateCart)
+);
+
+// Route for shopping cart
+router.get("/cart", utilities.handleErrors(invController.buildCartView));
 
 // route to get inventory by classification
 router.get(
   "/getInventory/:classification_id",
   utilities.handleErrors(invController.getInventoryJSON)
+);
+
+router.get("/checkout", utilities.handleErrors(invController.buildCheckout));
+
+// Route to process payment
+router.post(
+  "/process-payment",
+  utilities.handleErrors(invController.processPayment)
 );
 
 module.exports = router;

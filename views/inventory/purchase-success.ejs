@@ -1,0 +1,56 @@
+<h1>Purchase Successful!</h1>
+
+<%- messages() %>
+
+    <div class="success-container">
+        <div class="success-message">
+            <p>Thank you for your purchase! Your vehicle(s) will be ready for pickup.</p>
+            <p>Your new account balance is: <span class="account-balance">
+                    <%= accountBalance %>
+                </span></p>
+        </div>
+
+        <div class="order-details">
+            <h2>Order Details</h2>
+            <% if (orderDetails && orderDetails.length> 0) { %>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Vehicle</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orderDetails.forEach(item=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.name %>
+                                </td>
+                                <td>
+                                    <%= item.formattedPrice %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                                <tr class="order-total">
+                                    <td>Total:</td>
+                                    <td>
+                                        <%= totalPrice %>
+                                    </td>
+                                </tr>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <p>No order details available.</p>
+                    <% } %>
+        </div>
+
+        <div class="success-actions">
+            <a href="/inv/" class="action-link">Continue Shopping</a>
+            <a href="/account/" class="action-link">View Account</a>
+        </div>
+    </div>
+
+    <script>
+        // Clear the cart after successful purchase
+        localStorage.removeItem('cart');
+    </script>

@@ -93,7 +93,7 @@ Util.buildDetailedView = async function (vehicle) {
   return `
     <div class="vehicle-detail">
       <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />
-      <div class="vehicle-info">
+      <div class="vehicle-info" data-id="${vehicle.inv_id}" data-price="${vehicle.inv_price}">
         <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
         <h3>Price: ${price}</h3>
         <p>${vehicle.inv_description}</p>
