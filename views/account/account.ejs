@@ -2,14 +2,11 @@
     <%= title %>
 </h1>
 <div id="loginContainer">
-
-    <h1>Welcome to your account</h1>
-    <p>
-        <%= accountData.account_firstname %>
-    </p>
-    <p>
-        <%= accountData.account_lastname %>
-    </p>
-    <p>
-        <%= accountData.account_email %>
+    <h2>Welcome <%= accountData.account_firstname %>
+    </h2>
+    <p><a href="/account/update/<%= accountData.account_id %>" title="Click to update your account information">Update Account Information</a></p>
+    <% if ((accountData.account_type==="Admin" ) || (accountData.account_type==="Employee" )) { %>
+        <h3>Inventory Management</h3>
+        <p><a href="/inv/" title="Click to manage inventory">Manage Inventory</a></p>
+        <% } %>
 </div>

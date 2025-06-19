@@ -177,4 +177,23 @@ Util.checkJWTToken = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Middleware to check if user has admin or employee role
+ **************************************** */
+Util.checkAuthorization = (req, res, next) => {
+  if (res.locals.loggedin) {
+    const account_type = res.locals.accountData.account_type;
+    if (account_type === "Employee" || account_type === "Admin") {
+      next();
+      return;
+    } else {
+      req.flash("notice", "You don't have permission to access this page.");
+      return res.redirect("/account/login");
+    }
+  } else {
+    req.flash("notice", "Please log in to access this page.");
+    return res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;
