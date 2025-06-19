@@ -6,8 +6,27 @@
        res.redirect('/')
        } %>
 
-        <%- messages() %>
-            <ul id="inv-management">
-                <li><a href="/inv/add-classification" title="Add new classification">Add New Classification</a></li>
-                <li><a href="/inv/add-inventory" title="Add new inventory">Add New Inventory</a></li>
-            </ul>
+        <div class="management-container">
+            <%- messages() %>
+                <ul id="inv-management">
+                    <li><a href="/inv/add-classification" title="Add new classification">Add New Classification</a></li>
+                    <li><a href="/inv/add-inventory" title="Add new inventory">Add New Inventory</a></li>
+                </ul>
+                <h2>Manage Inventory</h2>
+
+                <% if (locals.classifications) { %>
+                    <p>Choose a classification to see the items belonging to it.</p>
+                    <select id="classificationList" name="classification_id">
+                        <option value="">Choose a Classification</option>
+                        <% classifications.forEach(classification=> { %>
+                            <option value="<%= classification.classification_id %>">
+                                <%= classification.classification_name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                    <% } %>
+
+                        <table id="inventoryDisplay"></table>
+                        <noscript>JavaScript must be enabled to use this page.</noscript>
+        </div>
+        <script src="../../js/inventory.js"></script>

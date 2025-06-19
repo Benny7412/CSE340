@@ -17,18 +17,19 @@
   to {
     opacity: 1;
     transform: translateY(0px);
-
   }
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background: #f9f9f9;
@@ -43,7 +44,14 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, nav, header {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+header {
   font-family: Poppins, sans-serif;
 }
 
@@ -52,7 +60,11 @@ h1 {
   text-align: center;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: var(--l);
 }
 
@@ -126,7 +138,6 @@ nav ul {
   list-style: none;
 }
 
-
 nav a {
   display: block;
   color: white;
@@ -150,7 +161,7 @@ nav a:hover {
 }
 
 .call-to-action-container {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   width: clamp(200px, 20%, 500px);
   position: absolute;
   top: 10%;
@@ -159,7 +170,8 @@ nav a:hover {
   font-weight: 700;
 }
 
-.reviews, .upgrades {
+.reviews,
+.upgrades {
   flex: 1;
   text-align: center;
 }
@@ -222,12 +234,10 @@ nav a:hover {
   gap: var(--xl);
   width: 80%;
   align-self: center;
-
 }
 #inv-display {
   list-style: none;
 }
-
 
 #inv-display li {
   background-color: white;
@@ -251,7 +261,6 @@ nav a:hover {
   font-size: var(--s);
   font-weight: 600;
   text-decoration: none;
-  
 }
 
 #inv-display img {
@@ -275,44 +284,48 @@ nav a:hover {
 .vehicle-detail img {
   max-width: 100%;
   height: auto;
-    margin: 10px;
+  margin: 10px;
 }
 
 .vehicle-info h2 {
   margin-top: 0;
 }
 
-
 /* Account view*/
 
-#loginContainer, #registerContainer {
+#loginContainer,
+#registerContainer {
   align-self: center;
   display: flex;
   flex-direction: column;
 }
 
-#loginForm, #registerForm {
+#loginForm,
+#registerForm {
   align-self: center;
   display: flex;
   flex-direction: column;
   width: 300px;
 }
 
-#loginForm div, #registerForm div {
-  display:flex;
+#loginForm div,
+#registerForm div {
+  display: flex;
   flex-direction: column;
   margin-bottom: var(--s);
 }
 
-#loginForm input, #registerForm input {
-  padding: .5rem;
+#loginForm input,
+#registerForm input {
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
 }
 
-#loginForm button, #registerForm button {
-  padding: .6rem 1.2rem;
+#loginForm button,
+#registerForm button {
+  padding: 0.6rem 1.2rem;
   font-size: 1rem;
   border: none;
   border-radius: 4px;
@@ -321,7 +334,8 @@ nav a:hover {
   transition: background-color 0.5s;
 }
 
-#loginForm button:hover, #registerForm button:hover {
+#loginForm button:hover,
+#registerForm button:hover {
   background-color: rgb(222, 222, 222);
 }
 
@@ -342,8 +356,6 @@ nav a:hover {
   }
 }
 
-
-
 @media screen and (min-width: 401px) {
   #top-header {
     flex-direction: row;
@@ -354,7 +366,11 @@ nav a:hover {
 }
 
 @media screen and (min-width: 673px) {
-  h2, h3, h4, h5, h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: var(--l);
   }
   nav ul {
@@ -365,4 +381,216 @@ nav a:hover {
   .reviews {
     margin-top: 0;
   }
+}
+
+/* Inventory Management Styles */
+#inv-management {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--m);
+  margin: var(--l) auto;
+  max-width: 600px;
+}
+
+#inv-management li {
+  width: 100%;
+}
+
+#inv-management a {
+  display: block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--m);
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+#inv-management a:hover {
+  background-color: #336f9c;
+}
+
+#classificationList {
+  display: block;
+  margin: var(--l) auto;
+  padding: var(--s);
+  width: 80%;
+  max-width: 400px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#inventoryDisplay {
+  width: 90%;
+  max-width: 800px;
+  margin: var(--l) auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#inventoryDisplay thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: var(--s);
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+#inventoryDisplay a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+#inv-management-title {
+  text-align: center;
+  margin: var(--l) 0;
+}
+
+.management-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--l);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Edit Inventory Form Styles */
+#updateForm {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s);
+  padding: var(--l);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#updateForm label {
+  font-weight: bold;
+  margin-bottom: var(--xxs);
+}
+
+#updateForm input,
+#updateForm textarea,
+#updateForm select {
+  padding: var(--s);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+#updateForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#updateForm button {
+  margin-top: var(--m);
+  padding: var(--s) var(--l);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color 0.2s;
+}
+
+#updateForm button:hover {
+  background-color: #2a5d84;
+}
+
+#edit-inventory-form button:hover {
+  background-color: #2a5d84;
+}
+
+/* Delete Confirmation Styles */
+.delete-confirmation {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s);
+  padding: var(--l);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.delete-confirmation h2 {
+  color: #d9534f;
+  margin-bottom: var(--s);
+}
+
+.vehicle-details {
+  margin: var(--m) 0;
+  padding: var(--m);
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.vehicle-details img {
+  max-width: 100%;
+  height: auto;
+  margin-top: var(--s);
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: var(--s) var(--l);
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #c9302c;
+}
+
+.cancel-btn {
+  display: inline-block;
+  margin-left: var(--m);
+  padding: var(--s) var(--l);
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
 }
