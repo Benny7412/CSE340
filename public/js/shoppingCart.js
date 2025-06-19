@@ -94,12 +94,17 @@ document.addEventListener("DOMContentLoaded", function () {
   clearCartButton.addEventListener("click", clearCart);
 
   checkoutButton.addEventListener("click", function () {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length === 0) {
+      return;
+    }
+
+    // Calculate total price
     let totalPrice = 0;
     cart.forEach((item) => {
       totalPrice += parseFloat(item.price);
     });
 
-    // Check if user is logged in by making an AJAX request
     fetch("/account/check-account-balance", {
       method: "POST",
       headers: {
@@ -121,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error checking account balance:", error);
-        // Default to redirect if there's an error
         window.location.href = "/inv/checkout";
       });
   });
